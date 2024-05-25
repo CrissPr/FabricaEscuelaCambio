@@ -1,0 +1,41 @@
+spring: # Spring configuration
+    datasource: # Database connection
+        url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://aws-0-sa-east-1.pooler.supabase.com:5432/postgres}
+        username: ${SPRING_DATASOURCE_USERNAME:postgres.htvtxwvfcbscbtegopgl}
+        password: ${SPRING_DATASOURCE_PASSWORD:F4bric4Escuel4*}
+        hikari:
+            schema: sitas
+
+    jpa: # JPA
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                format_sql: true
+        database: postgresql
+        show-sql: false
+    main:
+        allow-bean-definition-overriding: true
+
+management:
+    metrics:
+        tags:
+            application: Sitas
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+    endpoint:
+        health:
+            show-details: always
+            enabled: true
+
+logging:
+    level:
+        web: trace
+        org:
+            springframework:
+                web: trace
+
+server:
+    port: 8099
